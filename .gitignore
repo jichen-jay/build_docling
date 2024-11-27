@@ -1,0 +1,6 @@
+.github
+.idea
+.venv
+dist
+convert.egg-info
+docling.egg-info

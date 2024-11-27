@@ -1,0 +1,25 @@
+FROM python:3.12-slim
+
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+
+WORKDIR /app
+
+# Set environment variables for caching
+ENV TRANSFORMERS_CACHE=/app/cache
+ENV TORCH_HOME=/app/torch_home
+
+# Install dependencies without mounting
+COPY uv.lock pyproject.toml /app/
+RUN uv sync --frozen
+
+COPY . /app
+
+# Run the script to download model weights during build
+RUN uv run docling/download_weights.py
+
+# Ensure the environment variables are set at runtime
+ENV TRANSFORMERS_CACHE=/app/cache
+ENV TORCH_HOME=/app/torch_home
+
+# Set the entry point to your script
+ENTRYPOINT ["uv", "run", "docling/convert.py"]

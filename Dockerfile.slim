@@ -1,0 +1,54 @@
+# Build stage
+FROM python:3.11-slim-bookworm as builder
+WORKDIR /app
+
+# Install system dependencies (adjust as needed)
+RUN apt-get update && apt-get install -y \
+    redis-server \
+    libgl1 \
+    libglib2.0-0 \
+    curl \
+    wget \
+    git \
+    procps \
+    build-essential \
+    && apt-get clean 
+
+RUN curl -sSL https://install.python-poetry.org | python3 -
+
+ENV PATH="${PATH}:/root/.local/bin"
+
+COPY pyproject.toml poetry.lock /app/
+RUN poetry install --no-interaction --no-root
+
+RUN poetry run pip install --no-cache-dir torch torchvision --extra-index-url https://download.pytorch.org/whl/cpu
+ 
+# Download models (Also in the virtual environment)
+RUN poetry run python -c 'from docling.pipeline.standard_pdf_pipeline import StandardPdfPipeline; \
+                 artifacts_path = StandardPdfPipeline.download_models_hf(force=True, cache_dir="/app/.models_cache"); \
+                 print(f"MODELS_PATH={artifacts_path}");'
+
+# Pre-download EasyOCR models (CPU usage)
+RUN python -c 'import easyocr; reader = easyocr.reader(["fr", "de", "es", "en", "it", "pt"], gpu=False); print("EasyOCR models downloaded successfully")'
+
+# Runtime stage
+FROM python:3.11-slim-bookworm
+WORKDIR /app
+
+# Copy necessary files from the builder stage
+COPY --from=builder /app/.venv /app/.venv
+COPY --from=builder --chown=myuser:myuser /app/.models_cache/$MODELS_PATH /app/.models_cache/$MODELS_PATH 
+
+COPY --from=builder --chown=myuser:myuser /app /app
+
+# Create a non-root user and switch to it
+RUN useradd -ms /bin/bash myuser
+USER myuser
+
+ENV HF_HOME=/tmp/ \
+    TORCH_HOME=/tmp/ \
+    OMP_NUM_THREADS=4 \
+    POETRY_VIRTUALENVS_CREATE=false
+
+
+CMD ["poetry", "run", "uvicorn", "--port", "8080", "--host", "0.0.0.0", "main:app"] 
