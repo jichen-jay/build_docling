@@ -1,0 +1,63 @@
+# Stage 1: Builder
+FROM python:3.11-slim AS builder
+
+# Set the location to save cache paths
+ARG CACHE_PATHS_FILE=cache_paths.txt
+
+# Copy uv tool
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+
+WORKDIR /app
+
+# Copy essential files for dependency resolution
+COPY pyproject.toml uv.lock README.md ./
+
+# Copy the src directory for package discovery
+COPY ./src ./src
+
+# Install dependencies in frozen mode
+RUN uv sync --frozen
+
+# Run the script to download weights and output cache paths
+RUN uv run src/docling/download_weights.py --cache_paths_file ${CACHE_PATHS_FILE}
+
+# Copy the rest of the application code
+COPY . ./
+
+# Stage 2: Final
+FROM python:3.11-slim AS final
+
+# Set the location to read cache paths
+ARG CACHE_PATHS_FILE=cache_paths.txt
+
+WORKDIR /app
+
+# Copy application code and dependencies from the builder stage
+COPY --from=builder /app /app
+
+# Copy uv tool
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+
+# Set the shell to bash for complex commands
+SHELL ["/bin/bash", "-c"]
+
+# Read cache paths and copy cached weights
+RUN if [ -f "/app/${CACHE_PATHS_FILE}" ]; then \
+      while IFS= read -r line; do \
+        lib_name=$(echo "$line" | cut -d'=' -f1); \
+        cache_path=$(echo "$line" | cut -d'=' -f2); \
+        echo "Copying $lib_name cache from $cache_path"; \
+        host_cache_path="/root/.cache/${lib_name}"; \
+        mkdir -p "$host_cache_path"; \
+        cp -r "$cache_path"/* "$host_cache_path/"; \
+      done < /app/${CACHE_PATHS_FILE}; \
+    else \
+      echo "Cache paths file not found!"; \
+      exit 1; \
+    fi
+
+# Install dependencies in frozen mode
+RUN uv sync --frozen
+
+# Set the entrypoint to run your application
+ENTRYPOINT ["uv", "run", "src/docling/convert.py"]
