@@ -1,0 +1,181 @@
+[
+     {
+          "Id": "2ec545a3516f6219a2a5fdb24744fab884a452e763eca3e2cf80e141e9d538ce",
+          "Digest": "sha256:80e8ca31997b0ba9f734e556ce77c73713ebdaf3f9551cf3502c0a800675e8b7",
+          "RepoTags": [
+               "docker.io/km2306328/docling:latest"
+          ],
+          "RepoDigests": [
+               "docker.io/km2306328/docling@sha256:80e8ca31997b0ba9f734e556ce77c73713ebdaf3f9551cf3502c0a800675e8b7"
+          ],
+          "Parent": "",
+          "Comment": "",
+          "Created": "2024-11-21T01:48:27.45465997Z",
+          "Config": {
+               "Env": [
+                    "PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                    "LANG=C.UTF-8",
+                    "GPG_KEY=A035C8C19219BA821ECEA86B64E628F8D684696D",
+                    "PYTHON_VERSION=3.11.10",
+                    "PYTHON_SHA256=07a4356e912900e61a15cb0949a06c4a05012e213ecd6b4e84d0f67aabbee372",
+                    "GIT_SSH_COMMAND=ssh -o StrictHostKeyChecking=no",
+                    "HF_HOME=/tmp/",
+                    "TORCH_HOME=/tmp/",
+                    "OMP_NUM_THREADS=4"
+               ],
+               "Cmd": [
+                    "python3"
+               ],
+               "WorkingDir": "/",
+               "ArgsEscaped": true
+          },
+          "Version": "",
+          "Author": "",
+          "Architecture": "amd64",
+          "Os": "linux",
+          "Size": 3076366102,
+          "VirtualSize": 3076366102,
+          "GraphDriver": {
+               "Name": "overlay",
+               "Data": {
+                    "LowerDir": "/home/jaykchen/.local/share/containers/storage/overlay/7408f15760c19c97f3ea8c38145af6243c7870d0d502ba0d4fec10ebdbb00592/diff:/home/jaykchen/.local/share/containers/storage/overlay/62d6be77cda90e36d88d4d0bd131f4fe6db3cf5c87c04f6f33e257263b63ae75/diff:/home/jaykchen/.local/share/containers/storage/overlay/b9fda18a23c0aab65e468332b9989d493320660176ab3e534de47c149623951c/diff:/home/jaykchen/.local/share/containers/storage/overlay/b9f88f0c0b42c40d2342d5290c32958bd95b4d8cc2ba81882966bd00c2afceb6/diff:/home/jaykchen/.local/share/containers/storage/overlay/de5b95cfef666b0bdaf1f1bda04d85308f6424383d987c1f2ce8fc94a03fb0b0/diff:/home/jaykchen/.local/share/containers/storage/overlay/c4613e564e51ddedc9e143c0292039eaf2ff5bb4c09a7df548d5f92eaffc6364/diff:/home/jaykchen/.local/share/containers/storage/overlay/fbe1f6aea212534c84aede21128871c55429f03b825353df455ab7c22df6c9ed/diff:/home/jaykchen/.local/share/containers/storage/overlay/c3548211b8264f8bfa47a6727043a64f1791b82ac965a284a7ea187e971a95e2/diff",
+                    "UpperDir": "/home/jaykchen/.local/share/containers/storage/overlay/5cfdeac58187607f8269df4951979063eb2d57baa3c43049bc8081c8d5ecd5a5/diff",
+                    "WorkDir": "/home/jaykchen/.local/share/containers/storage/overlay/5cfdeac58187607f8269df4951979063eb2d57baa3c43049bc8081c8d5ecd5a5/work"
+               }
+          },
+          "RootFS": {
+               "Type": "layers",
+               "Layers": [
+                    "sha256:c3548211b8264f8bfa47a6727043a64f1791b82ac965a284a7ea187e971a95e2",
+                    "sha256:2440dc0bfce0be50901996dd0de04d2830062f2b2e63a73217fd9237e18c9b7c",
+                    "sha256:25b72b8029f800d4047ffbfc4017258ab87699d0e84084290fc35b89aef1391e",
+                    "sha256:bb4412c1f640a563d7a796fb752395399c529bfd06fa9c451b980b5ee5807d40",
+                    "sha256:bb516a1862723ac1ffcbc64a5d113b9a5bf5b0ad5a3e6dc98acbb8f54bc7c98d",
+                    "sha256:4070144b76a1dc68ecb9aab7238a929ceef258f85fffce63ad44640a02bd3e3b",
+                    "sha256:01f0dd1cf6fcb0b2588213bbeefb309725e04a303be09d61001bc606f4ef15ff",
+                    "sha256:a39174a7d4be835b0608b85e0ad2e44ddfee3efeb51e2a4d32ca7238bf028e55",
+                    "sha256:2eb52e17b65a71431e134c984bbdf1476f06514f314bb210870931fe06a392f5"
+               ]
+          },
+          "Labels": null,
+          "Annotations": {},
+          "ManifestType": "application/vnd.docker.distribution.manifest.v2+json",
+          "User": "",
+          "History": [
+               {
+                    "created": "2024-10-18T23:23:40Z",
+                    "created_by": "ADD rootfs.tar.xz / # buildkit",
+                    "comment": "buildkit.dockerfile.v0"
+               },
+               {
+                    "created": "2024-10-18T23:23:40Z",
+                    "created_by": "CMD [\"bash\"]",
+                    "comment": "buildkit.dockerfile.v0",
+                    "empty_layer": true
+               },
+               {
+                    "created": "2024-10-18T23:23:40Z",
+                    "created_by": "ENV PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                    "comment": "buildkit.dockerfile.v0",
+                    "empty_layer": true
+               },
+               {
+                    "created": "2024-10-18T23:23:40Z",
+                    "created_by": "ENV LANG=C.UTF-8",
+                    "comment": "buildkit.dockerfile.v0",
+                    "empty_layer": true
+               },
+               {
+                    "created": "2024-10-18T23:23:40Z",
+                    "created_by": "RUN /bin/sh -c set -eux; \tapt-get update; \tapt-get install -y --no-install-recommends \t\tca-certificates \t\tnetbase \t\ttzdata \t; \trm -rf /var/lib/apt/lists/* # buildkit",
+                    "comment": "buildkit.dockerfile.v0"
+               },
+               {
+                    "created": "2024-10-18T23:23:40Z",
+                    "created_by": "ENV GPG_KEY=A035C8C19219BA821ECEA86B64E628F8D684696D",
+                    "comment": "buildkit.dockerfile.v0",
+                    "empty_layer": true
+               },
+               {
+                    "created": "2024-10-18T23:23:40Z",
+                    "created_by": "ENV PYTHON_VERSION=3.11.10",
+                    "comment": "buildkit.dockerfile.v0",
+                    "empty_layer": true
+               },
+               {
+                    "created": "2024-10-18T23:23:40Z",
+                    "created_by": "ENV PYTHON_SHA256=07a4356e912900e61a15cb0949a06c4a05012e213ecd6b4e84d0f67aabbee372",
+                    "comment": "buildkit.dockerfile.v0",
+                    "empty_layer": true
+               },
+               {
+                    "created": "2024-10-18T23:23:40Z",
+                    "created_by": "RUN /bin/sh -c set -eux; \t\tsavedAptMark=\"$(apt-mark showmanual)\"; \tapt-get update; \tapt-get install -y --no-install-recommends \t\tdpkg-dev \t\tgcc \t\tgnupg \t\tlibbluetooth-dev \t\tlibbz2-dev \t\tlibc6-dev \t\tlibdb-dev \t\tlibffi-dev \t\tlibgdbm-dev \t\tliblzma-dev \t\tlibncursesw5-dev \t\tlibreadline-dev \t\tlibsqlite3-dev \t\tlibssl-dev \t\tmake \t\ttk-dev \t\tuuid-dev \t\twget \t\txz-utils \t\tzlib1g-dev \t; \t\twget -O python.tar.xz \"https://www.python.org/ftp/python/${PYTHON_VERSION%%[a-z]*}/Python-$PYTHON_VERSION.tar.xz\"; \techo \"$PYTHON_SHA256 *python.tar.xz\" | sha256sum -c -; \twget -O python.tar.xz.asc \"https://www.python.org/ftp/python/${PYTHON_VERSION%%[a-z]*}/Python-$PYTHON_VERSION.tar.xz.asc\"; \tGNUPGHOME=\"$(mktemp -d)\"; export GNUPGHOME; \tgpg --batch --keyserver hkps://keys.openpgp.org --recv-keys \"$GPG_KEY\"; \tgpg --batch --verify python.tar.xz.asc python.tar.xz; \tgpgconf --kill all; \trm -rf \"$GNUPGHOME\" python.tar.xz.asc; \tmkdir -p /usr/src/python; \ttar --extract --directory /usr/src/python --strip-components=1 --file python.tar.xz; \trm python.tar.xz; \t\tcd /usr/src/python; \tgnuArch=\"$(dpkg-architecture --query DEB_BUILD_GNU_TYPE)\"; \t./configure \t\t--build=\"$gnuArch\" \t\t--enable-loadable-sqlite-extensions \t\t--enable-optimizations \t\t--enable-option-checking=fatal \t\t--enable-shared \t\t--with-lto \t\t--with-ensurepip \t; \tnproc=\"$(nproc)\"; \tEXTRA_CFLAGS=\"$(dpkg-buildflags --get CFLAGS)\"; \tLDFLAGS=\"$(dpkg-buildflags --get LDFLAGS)\"; \tLDFLAGS=\"${LDFLAGS:--Wl},--strip-all\"; \tmake -j \"$nproc\" \t\t\"EXTRA_CFLAGS=${EXTRA_CFLAGS:-}\" \t\t\"LDFLAGS=${LDFLAGS:-}\" \t; \trm python; \tmake -j \"$nproc\" \t\t\"EXTRA_CFLAGS=${EXTRA_CFLAGS:-}\" \t\t\"LDFLAGS=${LDFLAGS:--Wl},-rpath='\\$\\$ORIGIN/../lib'\" \t\tpython \t; \tmake install; \t\tcd /; \trm -rf /usr/src/python; \t\tfind /usr/local -depth \t\t\\( \t\t\t\\( -type d -a \\( -name test -o -name tests -o -name idle_test \\) \\) \t\t\t-o \\( -type f -a \\( -name '*.pyc' -o -name '*.pyo' -o -name 'libpython*.a' \\) \\) \t\t\\) -exec rm -rf '{}' + \t; \t\tldconfig; \t\tapt-mark auto '.*' > /dev/null; \tapt-mark manual $savedAptMark; \tfind /usr/local -type f -executable -not \\( -name '*tkinter*' \\) -exec ldd '{}' ';' \t\t| awk '/=>/ { so = $(NF-1); if (index(so, \"/usr/local/\") == 1) { next }; gsub(\"^/(usr/)?\", \"\", so); printf \"*%s\\n\", so }' \t\t| sort -u \t\t| xargs -r dpkg-query --search \t\t| cut -d: -f1 \t\t| sort -u \t\t| xargs -r apt-mark manual \t; \tapt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \trm -rf /var/lib/apt/lists/*; \t\texport PYTHONDONTWRITEBYTECODE=1; \tpython3 --version; \t\tpip3 install \t\t--disable-pip-version-check \t\t--no-cache-dir \t\t--no-compile \t\t'setuptools==65.5.1' \t\twheel \t; \tpip3 --version # buildkit",
+                    "comment": "buildkit.dockerfile.v0"
+               },
+               {
+                    "created": "2024-10-18T23:23:40Z",
+                    "created_by": "RUN /bin/sh -c set -eux; \tfor src in idle3 pip3 pydoc3 python3 python3-config; do \t\tdst=\"$(echo \"$src\" | tr -d 3)\"; \t\t[ -s \"/usr/local/bin/$src\" ]; \t\t[ ! -e \"/usr/local/bin/$dst\" ]; \t\tln -svT \"$src\" \"/usr/local/bin/$dst\"; \tdone # buildkit",
+                    "comment": "buildkit.dockerfile.v0"
+               },
+               {
+                    "created": "2024-10-18T23:23:40Z",
+                    "created_by": "CMD [\"python3\"]",
+                    "comment": "buildkit.dockerfile.v0",
+                    "empty_layer": true
+               },
+               {
+                    "created": "2024-11-21T01:43:36.016135393Z",
+                    "created_by": "ENV GIT_SSH_COMMAND=ssh -o StrictHostKeyChecking=no",
+                    "comment": "buildkit.dockerfile.v0",
+                    "empty_layer": true
+               },
+               {
+                    "created": "2024-11-21T01:43:36.016135393Z",
+                    "created_by": "RUN /bin/sh -c apt-get update     && apt-get install -y libgl1 libglib2.0-0 curl wget git procps     && apt-get clean # buildkit",
+                    "comment": "buildkit.dockerfile.v0"
+               },
+               {
+                    "created": "2024-11-21T01:45:18.779517388Z",
+                    "created_by": "RUN /bin/sh -c pip install --no-cache-dir docling --extra-index-url https://download.pytorch.org/whl/cpu # buildkit",
+                    "comment": "buildkit.dockerfile.v0"
+               },
+               {
+                    "created": "2024-11-21T01:45:18.779517388Z",
+                    "created_by": "ENV HF_HOME=/tmp/",
+                    "comment": "buildkit.dockerfile.v0",
+                    "empty_layer": true
+               },
+               {
+                    "created": "2024-11-21T01:45:18.779517388Z",
+                    "created_by": "ENV TORCH_HOME=/tmp/",
+                    "comment": "buildkit.dockerfile.v0",
+                    "empty_layer": true
+               },
+               {
+                    "created": "2024-11-21T01:45:18.847379535Z",
+                    "created_by": "COPY docs/examples/minimal.py /root/minimal.py # buildkit",
+                    "comment": "buildkit.dockerfile.v0"
+               },
+               {
+                    "created": "2024-11-21T01:47:52.139073293Z",
+                    "created_by": "RUN /bin/sh -c python -c 'from deepsearch_glm.utils.load_pretrained_models import load_pretrained_nlp_models; load_pretrained_nlp_models(verbose=True);' # buildkit",
+                    "comment": "buildkit.dockerfile.v0"
+               },
+               {
+                    "created": "2024-11-21T01:48:27.45465997Z",
+                    "created_by": "RUN /bin/sh -c python -c 'from docling.pipeline.standard_pdf_pipeline import StandardPdfPipeline; StandardPdfPipeline.download_models_hf(force=True);' # buildkit",
+                    "comment": "buildkit.dockerfile.v0"
+               },
+               {
+                    "created": "2024-11-21T01:48:27.45465997Z",
+                    "created_by": "ENV OMP_NUM_THREADS=4",
+                    "comment": "buildkit.dockerfile.v0",
+                    "empty_layer": true
+               }
+          ],
+          "NamesHistory": [
+               "docker.io/km2306328/docling:latest"
+          ]
+     }
+]
